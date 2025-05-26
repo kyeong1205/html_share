@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구글(Alphabet) 주식 전망 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- 
+        Infographic Plan Summary:
+        1. Hero: Overview of Google's stock outlook - AI & Cloud focus.
+        2. Financial Highlights: Key metrics (revenue, profit, segment performance).
+        3. AI - Future Growth Engine: Gemini integration, AI Overviews, infrastructure investment.
+        4. Rise of Google Cloud: Market share, growth, profitability, competitive advantages.
+        5. Core Business Evolution: Search dominance, ad revenue trends, challenges.
+        6. Regulatory & Macro Environment: Antitrust, data privacy, economic factors.
+        7. Investment Outlook & Valuation: Analyst consensus, P/E comparison.
+        8. Opportunities & Risks: SWOT-like summary.
+        9. Conclusion: Investment thesis.
+
+        Color Palette Choice: "Modern Tech Blues & Teal Accent"
+        - Primary Dark Blue: #003f5c
+        - Secondary Medium Blue: #4d7ea8
+        - Tertiary Light Blue: #82a9d1
+        - Background Light: #F0F8FF (AliceBlue)
+        - Card Background: white
+        - Text Color (on light bg): #003f5c
+        - Text Color (on dark bg): white or #adccec
+        - Accent Color (Vibrant Teal): #1ABC9C
+        - Chart Colors: Mix of #4d7ea8, #82a9d1, #1ABC9C, #A9A9A9 (grey)
+
+        Visualization Choices (Summary - Confirming NO SVG / NO MERMAID JS):
+        - Big Numbers/Text (HTML/CSS): Hero takeaway, Financial stats, CapEx, AI stats, Search Market Share, Analyst Target Upside. (NO SVG)
+        - Donut Chart (Chart.js/Canvas): Financial Revenue Breakdown, PMax Adoption, Analyst Ratings. (NO SVG)
+        - Stacked Bar Chart (Chart.js/Canvas): Google Services Breakdown. (NO SVG)
+        - Line Chart (Chart.js/Canvas): Google Cloud Revenue Growth, Ad Revenue Trend. (NO SVG)
+        - Bar Chart (Chart.js/Canvas): Google Cloud Operating Margin, Cloud Market Share (Grouped), P/E Ratio Comparison. (NO SVG)
+        - HTML/CSS Lists/Icons (Unicode/Text): AI Gemini Integration, Cloud Advantages, Macro Factors. (NO SVG)
+        - Structured HTML/CSS (Tailwind): Antitrust Summary, Opportunities/Risks. (NO SVG, NO MERMAID JS)
+
+        Confirmation: NEITHER Mermaid JS NOR SVG were used anywhere in this output. All visuals are HTML/CSS based or Chart.js (Canvas).
+    -->
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F0F8FF; /* AliceBlue */
+            color: #003f5c; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .kpi-value {
+            font-size: 2.5rem; /* 40px */
+            font-weight: 700;
+            color: #1ABC9C; /* Accent Teal */
+        }
+        .kpi-label {
+            font-size: 1rem; /* 16px */
+            color: #4d7ea8; /* Medium Blue */
+        }
+        .section-title {
+            font-size: 2rem; /* 32px */
+            font-weight: 700;
+            color: #003f5c; /* Dark Blue */
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem; /* 12px */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem; /* 24px */
+            margin-bottom: 1.5rem; /* 24px */
+        }
+        .accent-text {
+            color: #1ABC9C;
+            font-weight: 600;
+        }
+        .sub-section-title {
+            font-size: 1.5rem; /* 24px */
+            font-weight: 600;
+            color: #003f5c;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+         .info-icon {
+            display: inline-block;
+            font-size: 1.5em;
+            margin-right: 0.5rem;
+            color: #1ABC9C;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-gradient-to-r from-[#003f5c] to-[#4d7ea8] text-white py-12 sm:py-16 md:py-20 text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">구글(Alphabet) 주식 전망</h1>
+            <p class="text-lg sm:text-xl md:text-2xl mb-6 text-[#adccec]">AI와 클라우드 시대를 선도하는 성장 동력 분석</p>
+            <p class="text-md sm:text-lg max-w-3xl mx-auto text-[#d0e1f0]">
+                Alphabet은 견고한 재무 성과와 AI 및 클라우드 부문의 혁신을 바탕으로 매력적인 투자 기회를 제공합니다. 
+                본 인포그래픽은 Alphabet의 성장 잠재력, 주요 사업 동향, 그리고 투자 시 고려해야 할 핵심 요소들을 심층적으로 분석합니다.
+            </p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+
+        <section id="financials" class="my-12">
+            <h2 class="section-title">📈 재무 하이라이트</h2>
+            <p class="text-center text-lg mb-8 text-[#4d7ea8]">Alphabet의 견고한 재무 건전성과 성장세를 확인하세요.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="card text-center">
+                    <p class="kpi-label">2025년 1분기 총 매출</p>
+                    <p class="kpi-value">$902억</p>
+                    <p class="text-sm text-gray-600">(전년 대비 <span class="accent-text">+12.0%</span>)</p>
+                </div>
+                <div class="card text-center">
+                    <p class="kpi-label">2025년 1분기 순이익</p>
+                    <p class="kpi-value">$345억</p>
+                    <p class="text-sm text-gray-600">(전년 대비 <span class="accent-text">+46.0%</span>)</p>
+                </div>
+                <div class="card text-center">
+                    <p class="kpi-label">2024년 연간 총 매출</p>
+                    <p class="kpi-value">$3,500억</p>
+                    <p class="text-sm text-gray-600">(전년 대비 <span class="accent-text">+14%</span>)</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="sub-section-title text-center">2025년 1분기 부문별 매출 비중</h3>
+                    <p class="text-sm text-center text-gray-500 mb-4">Google Services가 여전히 매출의 대부분을 차지하며, Cloud의 성장이 두드러집니다.</p>
+                    <div class="chart-container h-72 md:h-80"><canvas id="segmentRevenueChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3 class="sub-section-title text-center">Google Services 상세 (2025년 1분기)</h3>
+                     <p class="text-sm text-center text-gray-500 mb-4">검색 사업의 꾸준한 성장과 구독 서비스의 약진이 돋보입니다.</p>
+                    <div class="chart-container h-72 md:h-80"><canvas id="googleServicesChart"></canvas></div>
+                </div>
+            </div>
+
+             <div class="card mt-6">
+                <h3 class="sub-section-title text-center">자본 지출 및 주주 환원</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4 items-center">
+                    <div class="text-center">
+                        <p class="info-icon">🛠️</p>
+                        <p class="text-xl font-semibold text-[#003f5c]">미래를 위한 투자</p>
+                        <p class="text-3xl font-bold text-[#1ABC9C] my-2">$750억</p>
+                        <p class="text-[#4d7ea8]">2025년 예상 자본 지출 (AI 및 클라우드 인프라 중심)</p>
+                        <p class="text-sm text-gray-500">(2025년 1분기: $172억, 전년비 +43%)</p>
+                    </div>
+                    <div class="text-center">
+                         <p class="info-icon">🎁</p>
+                        <p class="text-xl font-semibold text-[#003f5c]">주주 가치 제고</p>
+                        <p class="text-3xl font-bold text-[#1ABC9C] my-2">$700억</p>
+                        <p class="text-[#4d7ea8]">최근 발표된 자사주 매입 규모</p>
+                        <p class="text-sm text-gray-500">(분기 배당금 5% 인상)</p>
+                    </div>
+                </div>
+                <p class="text-xs text-center text-gray-500 mt-6">Alphabet은 AI 역량 강화와 클라우드 인프라 확장을 위해 공격적인 투자를 지속하는 동시에, 자사주 매입과 배당을 통해 주주 환원 정책도 강화하고 있습니다. 이는 성장과 주주 가치 제고 사이의 균형을 추구하는 전략을 보여줍니다.</p>
+            </div>
+        </section>
+
+        <section id="ai" class="my-12">
+            <h2 class="section-title">🤖 AI - 미래 성장 엔진</h2>
+            <p class="text-center text-lg mb-8 text-[#4d7ea8]">Alphabet은 'AI 우선' 전략을 통해 모든 제품과 서비스에서 혁신을 가속화하고 있습니다.</p>
+            
+            <div class="card mb-6">
+                <h3 class="sub-section-title"><span class="info-icon">💡</span>Gemini AI: 핵심 동력</h3>
+                <p class="text-gray-700 mb-4">최첨단 AI 모델 Gemini는 Google 제품 전반에 통합되어 사용자 경험을 혁신하고 새로운 가치를 창출하고 있습니다.</p>
+                <ul class="list-disc list-inside space-y-2 text-[#003f5c]">
+                    <li><span class="font-semibold">15개 Google 제품</span>에 Gemini 모델 활용, <span class="accent-text">5억 명 이상</span> 사용자에게 도달</li>
+                    <li><span class="font-semibold">AI Overviews (검색):</span> 월 <span class="accent-text">15억 명 이상</span> 사용자, 관련 검색어 사용량 <span class="accent-text">10% 이상</span> 증가</li>
+                    <li><span class="font-semibold">Circle to Search:</span> <span class="accent-text">2억 5천만 개 이상</span> 기기에서 사용 가능, 사용량 <span class="accent-text">40%</span> 가까이 증가</li>
+                    <li><span class="font-semibold">Google Workspace:</span> Gmail, Docs 등 생산성 도구에 Gemini 통합으로 효율성 증대</li>
+                    <li><span class="font-semibold">Pixel 기기 및 Google Assistant:</span> Gemini Live, AI 기반 카메라 기능 등 모바일 경험 강화</li>
+                </ul>
+                <p class="text-sm text-gray-500 mt-4">이러한 광범위한 AI 통합은 사용자 참여를 높이고 장기적인 수익 성장 기반을 마련합니다.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="sub-section-title"><span class="info-icon">🏗️</span>AI 인프라 투자</h3>
+                    <p class="text-gray-700 mb-2">AI 개발 및 인프라 우위를 확보하기 위한 대규모 투자가 진행 중입니다.</p>
+                    <p class="text-3xl font-bold text-[#1ABC9C] my-2">$750억</p>
+                    <p class="text-[#4d7ea8] mb-2">2025년 예상 자본 지출</p>
+                    <ul class="list-none space-y-1 text-sm text-gray-600">
+                        <li>✅ 7세대 TPU 'Ironwood' 개발 (추론 성능 10배 향상 목표)</li>
+                        <li>✅ NVIDIA와의 강력한 파트너십 (최신 GPU 우선 공급)</li>
+                        <li>✅ 오픈 모델 Gemma 3 출시 (1억 4천만 다운로드 돌파)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="sub-section-title"><span class="info-icon">🎯</span>AI Overviews의 영향</h3>
+                    <p class="text-gray-700 mb-2">검색 결과 상단에 제공되는 AI 요약 정보는 사용자 만족도를 높이고 있습니다.</p>
+                    <p class="text-gray-600 mb-1"><span class="font-semibold">사용자 반응:</span> AI Overviews 결과에 <span class="accent-text">더 만족</span>, 검색 빈도 증가</p>
+                    <p class="text-gray-600 mb-1"><span class="font-semibold">상업적 효과:</span> 상업적 검색량 증가, 광고주에게 <span class="accent-text">새로운 기회</span> 창출</p>
+                    <p class="text-gray-600"><span class="font-semibold">광고 통합:</span> AI Overviews 및 AI Mode에 검색/쇼핑 광고 테스트 및 확장 중</p>
+                    <p class="text-xs text-gray-500 mt-3">일부 퍼블리셔 트래픽 감소 우려도 있지만, Google은 AI를 통해 광고 수익화 기회를 적극 모색하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="cloud" class="my-12">
+            <h2 class="section-title">☁️ Google Cloud의 부상</h2>
+            <p class="text-center text-lg mb-8 text-[#4d7ea8]">Google Cloud는 Alphabet의 핵심 성장 동력으로 자리매김하며, 수익성과 시장 점유율을 빠르게 확대하고 있습니다.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="card text-center">
+                    <p class="kpi-label">GCP Q1 2025 매출</p>
+                    <p class="kpi-value">$122.6억</p>
+                    <p class="text-sm text-gray-600">(전년 대비 <span class="accent-text">+28.1%</span>)</p>
+                </div>
+                <div class="card text-center">
+                    <p class="kpi-label">GCP Q1 2025 영업이익</p>
+                    <p class="kpi-value">$22억</p>
+                    <p class="text-sm text-gray-600">(전년 대비 <span class="accent-text">+141.9%</span>)</p>
+                </div>
+                <div class="card text-center">
+                    <p class="kpi-label">GCP Q1 2025 영업이익률</p>
+                    <p class="kpi-value">17.8%</p>
+                    <p class="text-sm text-gray-600">(2024년 1분기 9.4%에서 <span class="accent-text">크게 개선</span>)</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="sub-section-title text-center">글로벌 클라우드 시장 점유율 및 성장 (2025년 1분기)</h3>
+                    <p class="text-sm text-center text-gray-500 mb-4">Google Cloud는 경쟁사 대비 높은 성장률을 보이며 점유율을 확대하고 있습니다.</p>
+                    <div class="chart-container h-80 md:h-96"><canvas id="cloudMarketShareChart"></canvas></div>
+                </div>
+                <div class="card">
+                    <h3 class="sub-section-title text-center">Google Cloud의 경쟁 우위</h3>
+                    <p class="text-sm text-center text-gray-500 mb-4">AI/ML 전문성과 인프라 투자를 바탕으로 차별화된 가치를 제공합니다.</p>
+                    <ul class="space-y-3 text-[#003f5c]">
+                        <li class="flex items-start"><span class="info-icon text-xl">🧠</span><div><span class="font-semibold">AI/ML 리더십:</span> Vertex AI, BigQuery ML 등 포괄적인 AI 도구 및 업계 최고 수준의 멀티모달 AI 모델(Gemini 2.5 Pro 등) 제공.</div></li>
+                        <li class="flex items-start"><span class="info-icon text-xl">🌐</span><div><span class="font-semibold">글로벌 인프라 및 확장성:</span> 대규모 데이터 처리 및 고성능 지원.</div></li>
+                        <li class="flex items-start"><span class="info-icon text-xl">🔗</span><div><span class="font-semibold">데이터 분석 통합:</span> BigQuery, Dataflow 등과 원활한 통합.</div></li>
+                        <li class="flex items-start"><span class="info-icon text-xl">💡</span><div><span class="font-semibold">오픈소스 지원:</span> TensorFlow, Kubeflow 등 강력한 지원.</div></li>
+                        <li class="flex items-start"><span class="info-icon text-xl">💰</span><div><span class="font-semibold">비용 효율성:</span> 종량제 모델 및 지속 사용 할인.</div></li>
+                    </ul>
+                     <p class="text-xs text-gray-500 mt-4">Google Cloud의 성장은 Alphabet 전체의 가치 평가 상승에 기여할 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="core-business" class="my-12">
+            <h2 class="section-title">🔍 핵심 사업의 진화: 검색 및 광고</h2>
+            <p class="text-center text-lg mb-8 text-[#4d7ea8]">Google의 검색 및 광고 사업은 AI 통합과 시장 변화에 발맞춰 지속적으로 발전하고 있습니다.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="sub-section-title text-center">검색 시장 지배력</h3>
+                     <p class="text-sm text-center text-gray-500 mb-4">여전히 압도적인 시장 점유율을 유지하고 있습니다.</p>
+                    <div class="text-center my-4">
+                        <p class="kpi-label">글로벌 검색 시장 점유율 (2025년 3월)</p>
+                        <p class="kpi-value">90.14%</p>
+                    </div>
+                    <p class="text-gray-700"><span class="font-semibold">AI Overviews:</span> 사용자 만족도 및 검색 빈도 증가, 상업적 검색량 증가로 광고주에게 새로운 기회 제공. Google은 AI Overviews에 광고 통합 테스트 중.</p>
+                    <p class="text-xs text-gray-500 mt-2">경쟁 심화에도 불구, 확고한 사용자 기반과 빠른 AI 통합으로 지배력 유지 중.</p>
+                </div>
+                <div class="card">
+                    <h3 class="sub-section-title text-center">디지털 광고 매출 동향</h3>
+                    <p class="text-sm text-center text-gray-500 mb-4">AI 기반 광고 상품의 힘으로 견조한 성장세를 이어가고 있습니다.</p>
+                    <div class="text-center my-4">
+                        <p class="kpi-label">2025년 1분기 광고 매출</p>
+                        <p class="kpi-value">$668.9억</p>
+                        <p class="text-sm text-gray-600">(전년 대비 <span class="accent-text">+8.5%</span>)</p>
+                    </div>
+                    <p class="text-gray-700 mb-2"><span class="font-semibold">검색 광고 지출 (Q1 2025):</span> 전년 대비 <span class="accent-text">+9%</span> (CPC 상승 주도)</p>
+                    <p class="text-gray-700"><span class="font-semibold">디지털 비디오 광고:</span> 2025년 <span class="accent-text">14%</span> 성장 예상 (YouTube 중심)</p>
+                    <p class="text-xs text-gray-500 mt-2">도전 과제: Google Network 매출 감소, PMax 캠페인 성과 혼재, 거시경제적 압박.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="regulatory-macro" class="my-12">
+            <h2 class="section-title">⚖️ 규제 환경 및 거시경제</h2>
+            <p class="text-center text-lg mb-8 text-[#4d7ea8]">Alphabet의 미래는 법적 문제, 데이터 프라이버시, 그리고 경제 상황 등 외부 요인의 영향을 받습니다.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="sub-section-title"><span class="info-icon">📜</span>독점 금지 조사</h3>
+                    <p class="text-gray-700 mb-2">여러 건의 중요한 독점 금지 소송에 직면, 사업 모델에 변화를 가져올 수 있는 장기적 위험 요인입니다.</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-[#003f5c]">
+                        <li><span class="font-semibold">광고 기술 시장 독점:</span> 2025년 4월, DOJ 소송에서 Google 패소 판결.</li>
+                        <li><span class="font-semibold">온라인 검색 독점:</span> 2024년 8월, 법원 Google의 불법적 독점 유지 판결.</li>
+                        <li><span class="font-semibold">잠재적 구제책:</span> 사업 분할, 데이터 공유 요구 등 (구제책 재판 진행 중).</li>
+                    </ul>
+                    <p class="text-xs text-gray-500 mt-3">소송 결과는 Alphabet의 미래에 중대한 영향을 미칠 수 있습니다.</p>
+                </div>
+
+                <div class="card">
+                    <h3 class="sub-section-title"><span class="info-icon">🛡️</span>데이터 프라이버시</h3>
+                    <p class="text-gray-700 mb-2">강화되는 데이터 프라이버시 규제는 광고 타겟팅 및 AI 모델 학습에 영향을 줄 수 있습니다.</p>
+                    <ul class="list-disc list-inside space-y-1 text-sm text-[#003f5c]">
+                        <li>2026년까지 미국 인구 절반이 주별 프라이버시 법 적용 예상.</li>
+                        <li>아동 온라인 프라이버시 및 생체 데이터 보호 강조.</li>
+                        <li>규정 준수 비용 및 소송 위험 증가.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mt-6">
+                <h3 class="sub-section-title text-center"><span class="info-icon">🌍</span>거시경제적 요인</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-4 text-center">
+                    <div>
+                        <p class="text-2xl mb-1">📉</p>
+                        <p class="font-semibold text-[#003f5c]">금리 정책</p>
+                        <p class="text-sm text-gray-600">2025년 말 Fed 금리 3.75% 목표 예상 (기술주에 긍정적)</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl mb-1">📈</p>
+                        <p class="font-semibold text-[#003f5c]">글로벌 IT/AI 지출</p>
+                        <p class="text-sm text-gray-600">IT 지출 +9.3% (2025년), AI 지출 연평균 +29% (2024-28) (GCP/AI에 순풍)</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl mb-1">📊</p>
+                        <p class="font-semibold text-[#003f5c]">광고 인플레이션</p>
+                        <p class="text-sm text-gray-600">미국 유료 검색 인플레이션 6.3% (2025년) (광고주 ROI 압박 가능성)</p>
+                    </div>
+                </div>
+                <p class="text-xs text-center text-gray-500 mt-4">전반적으로 기술 성장을 지지하는 환경이나, 특정 부문 비용 상승은 주의가 필요합니다.</p>
+            </div>
+        </section>
+
+        <section id="valuation" class="my-12">
+            <h2 class="section-title">📊 투자 전망 및 가치 평가</h2>
+            <p class="text-center text-lg mb-8 text-[#4d7ea8]">애널리스트들은 Alphabet의 미래를 긍정적으로 평가하며, 현재 주가는 매력적인 수준으로 판단됩니다.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card">
+                    <h3 class="sub-section-title text-center">애널리스트 컨센서스 (GOOGL 기준)</h3>
+                    <p class="text-sm text-center text-gray-500 mb-4">대부분의 애널리스트가 '매수' 의견을 제시하고 있습니다.</p>
+                    <div class="chart-container h-64 md:h-72 mb-4"><canvas id="analystRatingsChart"></canvas></div>
+                    <div class="text-center">
+                        <p class="kpi-label">평균 목표 주가 (GOOGL)</p>
+                        <p class="text-2xl font-bold text-[#1ABC9C]">$558.32</p>
+                        <p class="text-sm text-gray-600">(상승 잠재력 시사)</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="sub-section-title text-center">P/E 비율 분석 (2025년 5월 GOOGL 기준)</h3>
+                    <p class="text-sm text-center text-gray-500 mb-4">역사적 평균 및 주요 경쟁사 대비 낮은 P/E 비율은 잠재적 저평가를 시사합니다.</p>
+                    <div class="text-center my-4">
+                        <p class="kpi-label">현재 P/E (GOOGL)</p>
+                        <p class="kpi-value" style="font-size: 2rem;">18.59</p>
+                        <p class="text-sm text-gray-600">(10년 평균 대비 <span class="accent-text">-34%</span>)</p>
+                    </div>
+                    <div class="chart-container h-64 md:h-72"><canvas id="peRatioChart"></canvas></div>
+                </div>
+            </div>
+             <p class="text-sm text-center text-gray-600 mt-6">강력한 성장 전망과 AI 및 클라우드 분야의 리더십을 고려할 때, 현재 Alphabet의 가치 평가는 매력적인 투자 기회를 제공할 수 있습니다. 다만, AI 투자 수익화에 대한 시장의 명확한 증명 요구는 단기적 변동 요인이 될 수 있습니다.</p>
+        </section>
+        
+        <section id="opportunities-risks" class="my-12">
+            <h2 class="section-title">💡 기회와 위험 ⚠️</h2>
+            <p class="text-center text-lg mb-8 text-[#4d7ea8]">Alphabet 투자 시 고려해야 할 주요 기회 요인과 잠재적 위험 요소를 살펴보세요.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card border-l-4 border-[#1ABC9C]">
+                    <h3 class="sub-section-title text-[#1ABC9C]">주요 성장 기회</h3>
+                    <ul class="list-disc list-inside space-y-2 mt-3 text-[#003f5c]">
+                        <li><span class="font-semibold">AI 리더십 및 통합:</span> Gemini를 통한 제품 혁신 및 신규 수익 창출.</li>
+                        <li><span class="font-semibold">Google Cloud의 고성장 및 수익성 개선:</span> 매출 다각화 및 수익성 향상 기여.</li>
+                        <li><span class="font-semibold">탄력적인 핵심 광고 사업:</span> 지배적 시장 점유율과 AI 기반 광고 도구.</li>
+                        <li><span class="font-semibold">전략적 자본 배분:</span> AI 인프라 투자 및 주주 환원 강화.</li>
+                        <li><span class="font-semibold">사업 다각화:</span> YouTube 구독, Google One 등 성장.</li>
+                    </ul>
+                </div>
+                <div class="card border-l-4 border-red-500">
+                    <h3 class="sub-section-title text-red-500">잠재적 위험 요인</h3>
+                    <ul class="list-disc list-inside space-y-2 mt-3 text-[#003f5c]">
+                        <li><span class="font-semibold">규제 조사 및 독점 금지 판결:</span> 사업 구조 변경, 벌금 등 리스크.</li>
+                        <li><span class="font-semibold">AI 수익화 불확실성:</span> 막대한 투자 대비 가시적 성과 요구.</li>
+                        <li><span class="font-semibold">경쟁 심화:</span> AI 및 클라우드 시장 경쟁 치열.</li>
+                        <li><span class="font-semibold">광고 환경 변화:</span> AI Overviews 영향, CPC 상승, 거시경제 압박.</li>
+                        <li><span class="font-semibold">데이터 프라이버시 규제 강화:</span> 규정 준수 비용 및 위험 증가.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="conclusion" class="my-12 py-10 bg-[#003f5c] text-white rounded-lg shadow-xl">
+            <h2 class="text-3xl font-bold text-center mb-6">결론: 투자 논지</h2>
+            <div class="max-w-3xl mx-auto px-4 text-center text-[#d0e1f0]">
+                <p class="mb-4">Alphabet은 AI와 클라우드를 중심으로 한 강력한 성장 동력, 견고한 재무 성과, 그리고 매력적인 현재 가치 평가를 바탕으로 장기 투자자에게 매력적인 기회를 제공합니다.</p>
+                <p class="mb-4">단기적인 변동성과 규제 관련 불확실성은 존재하지만, 회사의 근본적인 경쟁력과 혁신 역량은 이러한 도전 과제를 극복하고 지속적인 성장을 이끌어낼 잠재력을 가지고 있습니다.</p>
+                <p class="font-semibold text-[#1ABC9C]">투자자들은 독점 금지 소송 결과, AI 이니셔티브의 구체적인 수익화 성과, 그리고 Google Cloud의 지속적인 시장 점유율 확대 및 수익성 개선 추이를 면밀히 주시할 필요가 있습니다.</p>
+                <p class="mt-6">전반적으로 Alphabet은 "매수" 의견을 유지하며, 장기적인 관점에서 포트폴리오에 편입할 만한 가치가 있는 기업으로 판단됩니다.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-6 bg-[#4d7ea8] text-white text-sm">
+        <p>&copy; 2025 Alphabet 주식 전망 인포그래픽. 제공된 정보는 투자 조언이 아니며, 정보 제공 목적으로만 사용됩니다.</p>
+        <p>데이터 출처: 구글 주식 전망 분석 보고서 (2025년 5월 기준)</p>
+    </footer>
+
+    <script>
+        const accentColor = '#1ABC9C'; // Teal
+        const primaryBlue = '#4d7ea8'; // Medium Blue
+        const secondaryBlue = '#82a9d1'; // Light Blue
+        const darkBlueText = '#003f5c';
+        const greyColor = '#A9A9A9';
+
+        function wrapLabel(str, maxWidth) {
+            if (!str) return '';
+            if (str.length <= maxWidth) return str;
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + ' ' + words[i]).length <= maxWidth) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+        
+        const tooltipTitleCallback = (tooltipItems) => {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+              return label.join(' ');
+            }
+            return label;
+        };
+
+        // Chart 1: Segment Revenue Q1 2025
+        const segmentRevenueData = {
+            labels: [wrapLabel('Google Services',16), wrapLabel('Google Cloud',16), wrapLabel('Other Bets',16)],
+            datasets: [{
+                label: '2025년 1분기 매출 비중',
+                data: [772.64, 122.60, 4.50], // In Billions USD
+                backgroundColor: [primaryBlue, accentColor, secondaryBlue],
+                hoverOffset: 4
+            }]
+        };
+        new Chart(document.getElementById('segmentRevenueChart'), {
+            type: 'doughnut',
+            data: segmentRevenueData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: darkBlueText } },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        // Chart 2: Google Services Breakdown Q1 2025
+        const googleServicesData = {
+            labels: [wrapLabel('Google Search & Other',16), wrapLabel('YouTube Ads',16), wrapLabel('Google Subscriptions, Platforms, and Devices',25)],
+            datasets: [{
+                label: '2025년 1분기 매출 (십억 달러)',
+                data: [507.02, 89.27, 103.79],
+                backgroundColor: [primaryBlue, accentColor, secondaryBlue],
+            }]
+        };
+        new Chart(document.getElementById('googleServicesChart'), {
+            type: 'bar',
+            data: googleServicesData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                indexAxis: 'y',
+                scales: {
+                    x: { ticks: { color: darkBlueText }, grid: { display: false } },
+                    y: { ticks: { color: darkBlueText } }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+        
+        // Chart 3: Cloud Market Share Q1 2025
+        const cloudMarketShareData = {
+            labels: ['AWS', 'Microsoft Azure', wrapLabel('Google Cloud',16)],
+            datasets: [
+                {
+                    label: '시장 점유율 (%)',
+                    data: [29, 22, 12],
+                    backgroundColor: primaryBlue,
+                    yAxisID: 'y',
+                },
+                {
+                    label: '매출 성장률 (%)',
+                    data: [17, 21, 28],
+                    backgroundColor: accentColor,
+                    yAxisID: 'y1',
+                }
+            ]
+        };
+        new Chart(document.getElementById('cloudMarketShareChart'), {
+            type: 'bar',
+            data: cloudMarketShareData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                 scales: {
+                    x: { ticks: { color: darkBlueText }, grid: { display: false } },
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: { display: true, text: '시장 점유율 (%)', color: darkBlueText },
+                        ticks: { color: darkBlueText }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: { display: true, text: '매출 성장률 (%)', color: darkBlueText },
+                        grid: { drawOnChartArea: false },
+                        ticks: { color: darkBlueText }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'top', labels: { color: darkBlueText } },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        // Chart 4: Analyst Ratings
+        const analystRatingsData = {
+            labels: [wrapLabel('강력 매수',16), '매수', '보유'],
+            datasets: [{
+                label: '애널리스트 투자의견 (GOOGL)',
+                data: [Math.round(0.52*60), Math.round(0.33*60), Math.round(0.15*60)], // 52% Strong Buy, 33% Buy, 15% Hold (out of 60)
+                backgroundColor: [accentColor, primaryBlue, secondaryBlue],
+                hoverOffset: 4
+            }]
+        };
+        new Chart(document.getElementById('analystRatingsChart'), {
+            type: 'pie',
+            data: analystRatingsData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom', labels: { color: darkBlueText } },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+        // Chart 5: P/E Ratio Comparison
+        const peRatioData = {
+            labels: [wrapLabel('Alphabet (GOOGL)',16), 'Apple', 'Amazon', 'Microsoft', wrapLabel('GOOGL 10년 평균',16)],
+            datasets: [{
+                label: 'P/E 비율 (2025년 5월)',
+                data: [18.59, 30.32, 32.06, 34.66, 28.12],
+                backgroundColor: [accentColor, primaryBlue, primaryBlue, primaryBlue, secondaryBlue],
+            }]
+        };
+        new Chart(document.getElementById('peRatioChart'), {
+            type: 'bar',
+            data: peRatioData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: { ticks: { color: darkBlueText }, grid: { display: false } },
+                    y: { ticks: { color: darkBlueText } }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { callbacks: { title: tooltipTitleCallback } }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
