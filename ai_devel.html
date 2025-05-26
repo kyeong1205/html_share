@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 시대 개발자 미래 전망</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif; /* Assuming Inter is a good default, or system fonts */
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* Default max-width, can be overridden by Tailwind */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* Base height */
+            max-height: 400px; /* Max height */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+            padding: 1.5rem; /* p-6 */
+            margin-bottom: 1.5rem; /* mb-6 */
+        }
+        /* Energetic & Playful Palette:
+           Red: #FF6B6B
+           Yellow: #FFD166
+           Green: #06D6A0
+           Blue: #118AB2
+           Dark Blue/Text: #073B4C
+           Light Background: #F7FAFC (Tailwind's gray-50 or gray-100)
+        */
+        .text-palette-red { color: #FF6B6B; }
+        .bg-palette-red { background-color: #FF6B6B; }
+        .text-palette-yellow { color: #FFD166; }
+        .bg-palette-yellow { background-color: #FFD166; }
+        .text-palette-green { color: #06D6A0; }
+        .bg-palette-green { background-color: #06D6A0; }
+        .text-palette-blue { color: #118AB2; }
+        .bg-palette-blue { background-color: #118AB2; }
+        .text-palette-darkblue { color: #073B4C; }
+        .bg-palette-darkblue { background-color: #073B4C; }
+
+        .korean-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            color: #073B4C; /* text-palette-darkblue */
+            text-align: center;
+            margin-bottom: 2rem; /* mb-8 */
+            padding-top: 2rem; /* pt-8 */
+        }
+        .section-title {
+            font-size: 1.875rem; /* text-3xl */
+            font-weight: 600; /* font-semibold */
+            color: #118AB2; /* text-palette-blue */
+            margin-bottom: 1rem; /* mb-4 */
+            border-bottom: 2px solid #06D6A0; /* border-palette-green */
+            padding-bottom: 0.5rem; /* pb-2 */
+        }
+        .stat-big-number {
+            font-size: 3rem; /* text-5xl */
+            font-weight: 700; /* font-bold */
+            color: #06D6A0; /* text-palette-green */
+        }
+        .stat-label {
+            font-size: 1rem; /* text-base */
+            color: #073B4C; /* text-palette-darkblue */
+            margin-top: 0.25rem; /* mt-1 */
+        }
+        .skill-list {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        .skill-list li::marker {
+            color: #06D6A0;
+        }
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 2px dashed #118AB2;
+            border-radius: 0.5rem;
+        }
+        .flow-step {
+            background-color: #E0F2FE; /* light blue bg */
+            color: #073B4C;
+            padding: 0.75rem 1.25rem;
+            border-radius: 0.375rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            width: 80%;
+            max-width: 300px;
+        }
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #118AB2;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-palette-darkblue">
+
+    <header class="py-8 bg-palette-darkblue">
+        <h1 class="korean-title text-white">AI 시대, 개발자의 미래 전망</h1>
+    </header>
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <section id="intro" class="card">
+            <h2 class="section-title">1. AI, 위협인가 기회인가?</h2>
+            <p class="mb-4 text-gray-700">인공지능(AI)은 소프트웨어 개발 환경을 근본적으로 변화시키고 있습니다. 개발자를 대체하기보다는 역량을 강화하고 반복 작업을 자동화하여, 개발 작업의 핵심을 고부가가치 활동으로 전환시키는 강력한 도구로 작용하고 있습니다. AI 코드 도구 시장의 폭발적인 성장은 이러한 변화를 뒷받침합니다.</p>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="text-center">
+                    <span class="stat-big-number text-palette-green">257억</span>
+                    <p class="stat-label">2030년 AI 코드 도구 시장 규모 전망 (단위: 달러)</p>
+                    <p class="text-sm text-gray-600 mt-2">2024년 67억 달러에서 연평균 25.2% 성장</p>
+                </div>
+                <div class="chart-container h-[250px] md:h-[300px]"><canvas id="aiMarketGrowthChart"></canvas></div>
+            </div>
+            <p class="mt-4 text-gray-700">이러한 시장의 성장은 AI 기술의 광범위한 도입과 개발 프로세스 자동화에 대한 높은 기대를 반영합니다. 개발자에게 AI는 새로운 가능성을 열어주는 혁신적인 파트너가 될 수 있습니다.</p>
+        </section>
+
+        <section id="changes" class="card">
+            <h2 class="section-title">2. AI, 개발자를 어떻게 바꾸는가?</h2>
+            <p class="mb-4 text-gray-700">AI는 개발자의 생산성을 크게 향상시키지만, 동시에 새로운 과제와 고려 사항을 제시합니다. AI 도구를 활용하면 작업 완료 시간을 평균 55% 단축할 수 있으며, 코드 품질 및 문서화 개선에도 기여합니다. 그러나 AI 생성 코드의 보안 취약점, 과도한 의존 가능성, 개발자 번아웃 문제 등은 여전히 주의해야 할 부분입니다.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-6 text-center">
+                <div class="bg-palette-green/10 p-4 rounded-lg">
+                    <span class="text-3xl font-bold text-palette-green">55%</span>
+                    <p class="text-sm text-palette-darkblue mt-1">작업 완료 시간 단축</p>
+                </div>
+                <div class="bg-palette-yellow/10 p-4 rounded-lg">
+                    <span class="text-3xl font-bold text-palette-yellow">7.5%</span>
+                    <p class="text-sm text-palette-darkblue mt-1">문서 품질 향상</p>
+                </div>
+                <div class="bg-palette-red/10 p-4 rounded-lg">
+                    <span class="text-3xl font-bold text-palette-red">27%</span>
+                    <p class="text-sm text-palette-darkblue mt-1">AI 생성 코드 내 보안 취약점 발견율</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-palette-blue">AI의 주요 영향 (긍정적 vs. 부정적)</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">영향 유형</th>
+                                    <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">설명 및 데이터</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                                <tr>
+                                    <td class="px-4 py-2 whitespace-nowrap font-medium text-palette-green">생산성 향상</td>
+                                    <td class="px-4 py-2 text-gray-700">작업 완료 시간 최대 55% 단축, 플로우 상태 2.6% 개선</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2 whitespace-nowrap font-medium text-palette-green">품질 개선</td>
+                                    <td class="px-4 py-2 text-gray-700">코드 품질 3.4% 향상, 문서화 7.5% 향상</td>
+                                </tr>
+                                 <tr>
+                                    <td class="px-4 py-2 whitespace-nowrap font-medium text-palette-red">번아웃 문제</td>
+                                    <td class="px-4 py-2 text-gray-700">AI가 번아웃 비율을 의미있게 줄이지 못함 ("진공 가설")</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-4 py-2 whitespace-nowrap font-medium text-palette-red">성능 및 보안</td>
+                                    <td class="px-4 py-2 text-gray-700">소프트웨어 안정성 7.2% 감소 가능성, AI 코드 27% 취약점 포함</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="chart-container h-[280px] md:h-[320px] mt-4 md:mt-0"><canvas id="securityVulnerabilityChart"></canvas></div>
+            </div>
+             <p class="mt-6 text-gray-700">결국 AI는 개발자의 작업을 보조하고 효율성을 높이는 강력한 도구이지만, 그 결과물에 대한 비판적인 검토와 인간의 최종 판단이 필수적입니다. 특히 보안과 안정성 측면에서 인간 개발자의 감독 역할은 더욱 중요해집니다.</p>
+        </section>
+
+        <section id="jobOutlook" class="card">
+            <h2 class="section-title">3. 개발자, 사라지지 않는다! - 직업 전망</h2>
+            <p class="mb-4 text-gray-700">AI의 발전에도 불구하고 소프트웨어 개발자의 직업 전망은 여전히 밝습니다. 미국 노동통계국(BLS)은 2023년부터 2033년까지 소프트웨어 개발자 일자리가 17.9% 증가할 것으로 예측하고 있습니다. 이는 모든 직업의 평균 성장률인 4.0%를 훨씬 웃도는 수치입니다.</p>
+            <div class="chart-container h-[300px] md:h-[350px]"><canvas id="jobGrowthChart"></canvas></div>
+            <p class="mt-4 text-gray-700">이러한 지속적인 수요는 AI 시스템 자체를 구축, 통합, 유지 관리하는 개발자에 대한 필요성과 함께, AI 기술을 활용한 새로운 소프트웨어 및 서비스에 대한 시장의 요구가 계속 증가하기 때문입니다. AI는 개발자를 대체하기보다 새로운 기회를 창출하는 역할을 합니다.</p>
+        </section>
+
+        <section id="futureRole" class="card">
+            <h2 class="section-title">4. 미래 개발자의 역할: 코더에서 아키텍트/혁신가로</h2>
+            <p class="mb-4 text-gray-700">AI 시대에 개발자의 역할은 단순 코딩 작업을 넘어 더욱 전략적이고 창의적인 방향으로 진화하고 있습니다. 대규모 언어 모델(LLM)은 개발자 작업의 약 28.7%를 자동화할 수 있지만, 43.2%는 증강될 것으로 예상됩니다. 개발자는 솔루션 설계, 복잡한 요구사항 분석, 시스템 아키텍처 구축 등 고수준의 책임을 맡게 됩니다.</p>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div class="chart-container h-[300px] md:h-[350px]"><canvas id="taskTransformationChart"></canvas></div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-palette-blue">새로운 전문 분야의 부상</h3>
+                    <p class="text-gray-700 mb-2">AI 기술의 발전은 AI 엔지니어, MLOps 엔지니어와 같은 새로운 전문 분야의 수요를 급증시키고 있습니다. 예를 들어, MLOps 시장은 2023년 약 10억 달러에서 2030년 130억 달러 이상으로 성장이 예상됩니다.</p>
+                    <div class="chart-container h-[250px] md:h-[300px]"><canvas id="mlopsMarketGrowthChart"></canvas></div>
+                </div>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-xl font-semibold mb-4 text-center text-palette-blue">개발자 역할의 진화 과정</h3>
+                <div class="flow-diagram">
+                    <div class="flow-step">💻 전통적 개발자 (코드 중심)</div>
+                    <div class="flow-arrow">⬇️ AI 도구 학습 및 활용</div>
+                    <div class="flow-step">🤖 AI 활용 개발자 (자동화/증강)</div>
+                    <div class="flow-arrow">⬇️ 심층 전문화 및 인간 중심 역량 강화</div>
+                    <div class="flow-step">🌟 미래 선도 개발자 (전략가/혁신가/설계자)</div>
+                </div>
+                <p class="mt-4 text-center text-gray-600">AI를 효과적으로 활용하고, 더 복잡하고 창의적인 문제 해결에 집중하는 방향으로 개발자의 역할이 변화하고 있습니다.</p>
+            </div>
+        </section>
+
+        <section id="skills" class="card">
+            <h2 class="section-title">5. AI 시대, 개발자의 필수 역량</h2>
+            <p class="mb-6 text-gray-700">AI 시대에 개발자로서 성공적인 경력을 이어가기 위해서는 기술적 전문성과 함께 인간 중심의 독특한 역량을 균형 있게 발전시키는 것이 중요합니다. AI가 할 수 없는 영역에서 가치를 창출해야 합니다.</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-palette-green flex items-center">
+                        <span class="text-2xl mr-2">🚀</span> 기술적 역량
+                    </h3>
+                    <ul class="skill-list space-y-2 text-gray-700">
+                        <li><strong>AI/ML 기본 지식:</strong> 모델, 데이터셋, 알고리즘 이해 (TensorFlow, PyTorch 등)</li>
+                        <li><strong>데이터 분석 및 해석:</strong> AI 생성 데이터로부터 통찰력 추출</li>
+                        <li><strong>클라우드 및 DevOps:</strong> AI 워크로드 배포, 확장, CI/CD 자동화</li>
+                        <li><strong>프롬프트 엔지니어링:</strong> AI 모델로부터 효과적인 결과 도출</li>
+                        <li><strong>사이버 보안 및 데이터 프라이버시:</strong> AI 시스템의 보안 및 윤리적 거버넌스</li>
+                        <li><strong>프로그래밍 기본:</strong> AI 도구와의 효과적인 상호작용을 위한 견고한 기초</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-3 text-palette-yellow flex items-center">
+                        <span class="text-2xl mr-2">🧠</span> 인간 중심 역량
+                    </h3>
+                    <ul class="skill-list space-y-2 text-gray-700">
+                        <li><strong>비판적 사고 및 창의성:</strong> 독창적인 솔루션 및 혁신 주도</li>
+                        <li><strong>복잡한 문제 해결:</strong> 분석, 추상화, 디버깅, 전략적 접근</li>
+                        <li><strong>의사소통 및 협업:</strong> 명확한 아이디어 전달, 팀워크, AI 결과물 관리</li>
+                        <li><strong>감성 지능 및 공감:</strong> 인간 관계 구축, 사회적 복잡성 이해</li>
+                        <li><strong>윤리적 추론:</strong> AI 시스템의 공정성, 투명성, 책임성 확보</li>
+                        <li><strong>적응성 및 평생 학습:</strong> 변화 수용, 지속적인 기술 및 지식 습득</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="mt-6 text-gray-700">이러한 기술들은 AI가 제공하는 효율성을 바탕으로 개발자가 더 높은 가치를 창출하고, 변화하는 기술 환경에 성공적으로 적응하는 데 핵심적인 역할을 할 것입니다.</p>
+        </section>
+
+        <section id="conclusion" class="card text-center bg-palette-blue text-white">
+            <h2 class="section-title !text-white !border-palette-green">6. 결론: AI와 함께 성장하는 개발자</h2>
+            <p class="mb-4 text-lg">인공지능은 개발자에게 위협이 아닌, 전례 없는 성장의 기회를 제공합니다. AI를 강력한 파트너로 받아들이고, 기술적 전문성과 인간 중심 역량을 끊임없이 발전시키는 개발자는 AI 시대에도 혁신을 주도하며 지속적으로 번창할 것입니다.</p>
+            <p class="font-semibold">핵심은 끊임없는 학습, 적응, 그리고 AI와 협력하여 새로운 가치를 창조하는 것입니다.</p>
+        </section>
+    </main>
+
+    <footer class="text-center py-8 text-sm text-gray-500">
+        <p>&copy; 2025 AI 시대 개발자 미래 전망 인포그래픽. 정보 출처: 제공된 심층 분석 보고서.</p>
+    </footer>
+
+    <script>
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#073B4C', // text-palette-darkblue
+                        font: {
+                            size: 12
+                        }
+                    }
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    },
+                    bodyFont: {
+                        size: 12
+                    },
+                    titleFont: {
+                        size: 14,
+                        weight: 'bold'
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: '#073B4C',
+                        font: {
+                            size: 12
+                        }
+                    },
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#073B4C',
+                        font: {
+                            size: 12
+                        }
+                    },
+                    grid: {
+                        color: '#E5E7EB' // gray-200
+                    }
+                }
+            }
+        };
+
+        function wrapLabel(label, maxWidth) {
+            if (typeof label !== 'string' || label.length <= maxWidth) {
+                return label;
+            }
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            if (currentLine.trim().length > 0) {
+                lines.push(currentLine.trim());
+            }
+            return lines.length > 0 ? lines : [label]; // Return original if only one word and too long
+        }
+        
+        const CHART_COLORS = {
+            red: '#FF6B6B',
+            yellow: '#FFD166',
+            green: '#06D6A0',
+            blue: '#118AB2',
+            darkblue: '#073B4C'
+        };
+
+        // 1. AI Market Growth Chart
+        const aiMarketCtx = document.getElementById('aiMarketGrowthChart').getContext('2d');
+        new Chart(aiMarketCtx, {
+            type: 'line',
+            data: {
+                labels: ['2024년', '2026년', '2028년', '2030년'],
+                datasets: [{
+                    label: 'AI 코드 도구 시장 규모 (억 달러)',
+                    data: [6.7, 11.5, 18.0, 25.7], // Interpolated for more points
+                    borderColor: CHART_COLORS.green,
+                    backgroundColor: CHART_COLORS.green + '33', // Alpha
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {...defaultChartOptions}
+        });
+
+        // 2. Security Vulnerability Chart
+        const securityCtx = document.getElementById('securityVulnerabilityChart').getContext('2d');
+        new Chart(securityCtx, {
+            type: 'doughnut',
+            data: {
+                labels: [wrapLabel('보안 취약점 포함 코드', 16), wrapLabel('상대적으로 안전한 코드', 16)],
+                datasets: [{
+                    label: 'AI 생성 코드 보안',
+                    data: [27, 73],
+                    backgroundColor: [CHART_COLORS.red, CHART_COLORS.green],
+                    borderColor: ['#FFFFFF'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                cutout: '60%',
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: { position: 'bottom', labels: {...defaultChartOptions.plugins.legend.labels} }
+                }
+            }
+        });
+
+        // 3. Job Growth Chart
+        const jobGrowthCtx = document.getElementById('jobGrowthChart').getContext('2d');
+        new Chart(jobGrowthCtx, {
+            type: 'bar',
+            data: {
+                labels: [wrapLabel('소프트웨어 개발자', 16), wrapLabel('전체 직업 평균', 16)],
+                datasets: [{
+                    label: '일자리 증가율 전망 (2023-2033년, %)',
+                    data: [17.9, 4.0],
+                    backgroundColor: [CHART_COLORS.green, CHART_COLORS.blue],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                 indexAxis: 'y', // Horizontal bar chart
+                 scales: {
+                    x: { ...defaultChartOptions.scales.x, title: { display: true, text: '증가율 (%)', color: CHART_COLORS.darkblue } },
+                    y: { ...defaultChartOptions.scales.y }
+                 }
+            }
+        });
+
+        // 4. Task Transformation Chart
+        const taskTransCtx = document.getElementById('taskTransformationChart').getContext('2d');
+        new Chart(taskTransCtx, {
+            type: 'bar',
+            data: {
+                labels: ['개발자 작업'],
+                datasets: [
+                    {
+                        label: wrapLabel('LLM에 의한 자동화 가능 (%)', 16),
+                        data: [28.7],
+                        backgroundColor: CHART_COLORS.red,
+                        borderRadius: 4
+                    },
+                    {
+                        label: wrapLabel('LLM에 의한 증강 가능 (%)', 16),
+                        data: [43.2],
+                        backgroundColor: CHART_COLORS.yellow,
+                        borderRadius: 4
+                    },
+                    {
+                        label: wrapLabel('인간의 역할 중요 (%)', 16),
+                        data: [(100 - 28.7 - 43.2).toFixed(1)],
+                        backgroundColor: CHART_COLORS.green,
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                ...defaultChartOptions,
+                indexAxis: 'y',
+                scales: {
+                    x: { stacked: true, ...defaultChartOptions.scales.x, title: { display: true, text: '작업 비율 (%)', color: CHART_COLORS.darkblue } },
+                    y: { stacked: true, ...defaultChartOptions.scales.y }
+                },
+                plugins: {
+                    ...defaultChartOptions.plugins,
+                    legend: { position: 'bottom', labels: {...defaultChartOptions.plugins.legend.labels} }
+                }
+            }
+        });
+        
+        // 5. MLOps Market Growth Chart
+        const mlopsMarketCtx = document.getElementById('mlopsMarketGrowthChart').getContext('2d');
+        new Chart(mlopsMarketCtx, {
+            type: 'bar',
+            data: {
+                labels: ['2023년', '2030년'],
+                datasets: [{
+                    label: 'MLOps 시장 규모 (억 달러)',
+                    data: [1, 13],
+                    backgroundColor: [CHART_COLORS.blue, CHART_COLORS.green],
+                    borderRadius: 4
+                }]
+            },
+            options: {
+                ...defaultChartOptions,
+                 scales: {
+                    x: { ...defaultChartOptions.scales.x },
+                    y: { ...defaultChartOptions.scales.y, title: { display: true, text: '시장 규모 (억 달러)', color: CHART_COLORS.darkblue } }
+                 }
+            }
+        });
+
+    </script>
+</body>
+</html>
